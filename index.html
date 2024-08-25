@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yogi's Random Digit Creator</title>
+    <link rel="stylesheet" href="random_digit.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Yogi's Random Digit</h2>
+        <label for="minValue">Min:</label>
+        <input type="number" id="minValue" placeholder="Enter minimum value">
+        <label for="maxValue">Max:</label>
+        <input type="number" id="maxValue" placeholder="Enter maximum value">
+        <button onclick="generateRandomNumber()">Random Number Generated</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateRandomNumber() {
+            const min = parseInt(document.getElementById('minValue').value);
+            const max = parseInt(document.getElementById('maxValue').value);
+            if (isNaN(min) || isNaN(max) || min > max) {
+                document.getElementById('result').innerText = 'Please enter valid numbers.';
+                return;
+            }
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById('result').innerText = `Random Number: ${randomNumber}`;
+        }
+    </script>
+</body>
+</html>
